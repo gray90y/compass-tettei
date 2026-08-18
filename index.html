@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#コンパス ダメージ計算</title>
+</head>
+<body>
+
+  <h1>#コンパス ダメージ計算</h1>
+
+  <p>自分の攻撃力</p>
+  <input type="number" id="attack" value="100">
+
+  <p>相手の防御力</p>
+  <input type="number" id="defense" value="50">
+
+  <p>カード</p>
+  <select id="card">
+    <option value="1">通常攻撃 100%</option>
+    <option value="2">カードA 200%</option>
+    <option value="3">カードB 300%</option>
+  </select>
+
+  <br><br>
+
+  <button onclick="calcDamage()">ダメージを計算</button>
+
+  <h2 id="result">ダメージ：---</h2>
+
+  <script>
+    function calcDamage() {
+      const attack = Number(document.getElementById("attack").value);
+      const defense = Number(document.getElementById("defense").value);
+      const card = Number(document.getElementById("card").value);
+
+      let damage = attack * card - defense;
+
+      if (damage < 1) {
+        damage = 1;
+      }
+
+      document.getElementById("result").textContent =
+        "ダメージ：" + Math.floor(damage);
+    }
+  </script>
+
+</body>
+</html>
